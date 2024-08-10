@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Experiencia Laboral</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Formulario de Experiencia Laboral</h1>
+    <form action="{{ url_for('add_experiencia_laboral') }}" method="post">
+        <label for="empresa">Empresa:</label>
+        <input type="text" name="empresa" id="empresa">
+        <label for="cargo">Cargo:</label>
+        <input type="text" name="cargo" id="cargo">
+        <label for="fecha_inicio">Fecha de Inicio:</label>
+        <input type="text" name="fecha_inicio" id="fecha_inicio">
+        <label for="fecha_fin">Fecha de Fin:</label>
+        <input type="text" name="fecha_fin" id="fecha_fin">
+        <label for="descripcion">Descripción:</label>
+        <textarea name="descripcion" id="descripcion"></textarea>
+        <button type="submit">Guardar</button>
+    </form>
+
+    <h2>Experiencia Laboral Guardada</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Empresa</th>
+                <th>Cargo</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Fin</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exp in exps %}
+            <tr>
+                <td>{{ exp.empresa }}</td>
+                <td>{{ exp.cargo }}</td>
+                <td>{{ exp.fecha_inicio }}</td>
+                <td>{{ exp.fecha_fin }}</td>
+                <td>{{ exp.descripcion }}</td>
+                <td>
+                    <a href="{{ url_for('edit_experiencia_laboral', id=exp.id) }}" class="button-edit">Editar</a>
+                    <a href="{{ url_for('delete_experiencia_laboral', id=exp.id) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar esta experiencia laboral?');" class="button-delete">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('logout') }}" class="button-general">Volver al inicio</a>
+    <a href="{{ url_for('educacion') }}" class="button-general">Siguiente</a>
+
+</body>
+</html>

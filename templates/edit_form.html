@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Editar Datos Personales</title>
+</head>
+<body>
+    <h1>Editar Datos Personales</h1>
+    <form action="{{ url_for('edit_dato', id=dato.id) }}" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ dato.nombre }}">
+        
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" value="{{ dato.direccion }}">
+        
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" value="{{ dato.telefono }}">
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="{{ dato.email }}">
+        
+        <label for="linkedin">LinkedIn:</label>
+        <input type="text" id="linkedin" name="linkedin" value="{{ dato.linkedin }}">
+        
+        <label for="github">GitHub:</label>
+        <input type="text" id="github" name="github" value="{{ dato.github }}">
+        
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Datos Personales</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Formulario de Datos Personales</h1>
+
+    <form action="{{ url_for('add_dato') }}" method="POST" enctype="multipart/form-data">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="linkedin">LinkedIn:</label>
+        <input type="text" id="linkedin" name="linkedin">
+
+        <label for="github">GitHub:</label>
+        <input type="text" id="github" name="github">
+
+        <label for="foto">Foto de Perfil:</label>
+        <input type="file" id="foto" name="foto" accept="image/*">
+
+        <button type="submit">Guardar</button>
+    </form>
+
+    <h2>Datos Personales Guardados</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>LinkedIn</th>
+                <th>GitHub</th>
+                <th>Foto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dato in datos %}
+            <tr>
+                <td>{{ dato.nombre }}</td>
+                <td>{{ dato.direccion }}</td>
+                <td>{{ dato.telefono }}</td>
+                <td>{{ dato.email }}</td>
+                <td>{{ dato.linkedin }}</td>
+                <td>{{ dato.github }}</td>
+                <td>
+                    {% if dato.foto %}
+                    <img src="{{ url_for('static', filename='uploads/' ~ dato.foto) }}" alt="{{ dato.nombre }}" width="50">
+                    {% else %}
+                    No hay imagen
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ url_for('edit_dato', id=dato.id) }}" class="button-edit">Editar</a>
+                    <a href="{{ url_for('delete_dato', id=dato.id) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar este dato?');" class="button-delete">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="form-navigation">
+        <a href="{{ url_for('logout') }}" class="button-general"> Volver al Inicio</a>
+        <a href="{{ url_for('experiencia_laboral') }}" class="button-general">Siguiente</a>
+    </div>
+</body>
+</html>

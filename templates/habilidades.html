@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Habilidades</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Formulario de Habilidades</h1>
+    <form action="{{ url_for('add_habilidad') }}" method="post">
+        <label for="habilidad">Habilidad:</label>
+        <input type="text" name="habilidad" id="habilidad">
+        <label for="nivel">Nivel:</label>
+        <input type="text" name="nivel" id="nivel">
+        <button type="submit">Guardar</button>
+    </form>
+
+    <h2>Habilidades Guardadas</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Habilidad</th>
+                <th>Nivel</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for skill in skills %}
+            <tr>
+                <td>{{ skill.habilidad }}</td>
+                <td>{{ skill.nivel }}</td>
+                <td>
+                    <a href="{{ url_for('edit_habilidad', id=skill.id) }}" class="button-edit">Editar</a>
+                    <a href="{{ url_for('delete_habilidad', id=skill.id) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar esta habilidad?');" class="button-delete">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('logout') }}" class="button-general">Volver al inicio</a>
+    <a href="{{ url_for('proyectos') }}" class="button-general">Siguiente</a>
+
+</body>
+</html>
+
+
+

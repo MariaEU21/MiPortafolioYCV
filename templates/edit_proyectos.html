@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Editar Proyecto</title>
+</head>
+<body>
+    <h1>Editar Proyecto</h1>
+    <form action="{{ url_for('edit_proyecto', id=project.id) }}" method="POST">
+        <label for="nombre_proyecto">Nombre del Proyecto:</label>
+        <input type="text" id="nombre_proyecto" name="nombre_proyecto" value="{{ project.nombre_proyecto }}">
+        
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" value="{{ project.descripcion }}">
+        
+        <label for="tecnologias_utilizadas">Tecnologías Utilizadas:</label>
+        <input type="text" id="tecnologias_utilizadas" name="tecnologias_utilizadas" value="{{ project.tecnologias_utilizadas }}">
+        
+        <label for="enlace_proyecto">Enlace del Proyecto:</label>
+        <input type="text" id="enlace_proyecto" name="enlace_proyecto" value="{{ project.enlace_proyecto }}">
+        
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>
+
+

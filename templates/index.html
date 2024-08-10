@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio Personal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>¡Hola! Soy María Eugenia Urriste</h1>
+        <p>Conoce más sobre mi experiencia y proyectos</p>
+        <a href="{{ url_for('login') }}" class="btn-admin">Acceso Administrador</a>
+        <a href="{{ url_for('cv') }}" class="btn-cv">Mi Currículum</a>
+    </header>
+    <main>
+        <section id="about">
+            <h2>Sobre Mí</h2>
+            <p>Soy María Eugenia Urriste, estudiante de la <a href="https://teclab.edu.ar/" class="inline-link">Tecnicatura en Programación Web en Teclab</a>, donde estoy fortaleciendo mis habilidades en el desarrollo web. Cuento con certificaciones en <a href="https://www.educacionit.com/" class="inline-link">Educación IT</a> y <a href="https://platzi.com/" class="inline-link">Platzi</a>, donde me mantengo en constante aprendizaje a través de capacitaciones complementarias. Además, soy Productora Asesora de Seguros, brindando asesoramiento personalizado en el sector. Soy también dueña y socia de un negocio familiar, una panadería y rotisería, donde aplico mis conocimientos tanto en el ámbito empresarial como en la tecnología. Mi enfoque está en combinar estas áreas para ofrecer soluciones innovadoras y efectivas.</p>
+        </section>
+        <section id="experience">
+            <h2>Experiencia</h2>
+            <p>A lo largo de mi carrera, he trabajado en el sector asegurador como Productora Asesora de Seguros, donde he adquirido experiencia en la gestión de clientes y en la implementación de estrategias de venta. Actualmente, estoy complementando mi experiencia profesional con estudios en programación web, lo que me permite integrar tecnología en las operaciones de nuestro negocio familiar, una panadería y rotisería, mejorando tanto la gestión como la experiencia del cliente.</p>
+        </section>
+        <section id="projects">
+            <h2>Proyectos</h2>
+            <p>He desarrollado varios proyectos enfocados en la programación web, incluyendo la creación y mantenimiento del sitio web para nuestra panadería y rotisería familiar. Además, he participado en proyectos de automatización de procesos internos y en el desarrollo de aplicaciones que optimizan la atención al cliente y la gestión de ventas. Mi objetivo es seguir ampliando mi portafolio con proyectos que integren tecnología y soluciones innovadoras.</p>
+            <a href="ver_proyectos.html" class="button-general">Ver más proyectos</a>
+
+        </section>
+        <section id="contact">
+            <h2>Contacto</h2>
+            <p>Puedes contactarme a través de las siguientes plataformas:</p>
+            <a href="https://wa.me/tu_numero_de_whatsapp" target="_blank">
+                <img src="{{ url_for('static', filename='img/whatsapp.png') }}" alt="WhatsApp" style="width:40px;height:40px;">
+            </a>
+            <a href="https://www.linkedin.com/in/tu_linkedin/" target="_blank">
+                <img src="{{ url_for('static', filename='img/linkedin.png') }}" alt="LinkedIn" style="width:40px;height:40px;">
+            </a>
+            <a href="https://github.com/tu_github" target="_blank">
+                <img src="{{ url_for('static', filename='img/github.png') }}" alt="GitHub" style="width:40px;height:40px;">
+            </a>
+            <a href="mailto:tu_email@gmail.com">
+                <img src="{{ url_for('static', filename='img/gmail.png') }}" alt="Gmail" style="width:40px;height:40px;">
+            </a>
+        </section>
+    </main>
+</body>
+</html>
+
+
+
+

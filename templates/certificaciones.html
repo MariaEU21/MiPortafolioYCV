@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Certificaciones</title>
+</head>
+<body>
+    <h1>Certificaciones</h1>
+    <form action="/certificaciones/add" method="POST">
+        <label for="nombre_certificacion">Nombre de la Certificación:</label>
+        <input type="text" id="nombre_certificacion" name="nombre_certificacion" required>
+        
+        <label for="organizacion_emisora">Organización Emisora:</label>
+        <input type="text" id="organizacion_emisora" name="organizacion_emisora" required>
+        
+        <label for="fecha_expedicion">Fecha de Expedición:</label>
+        <input type="date" id="fecha_expedicion" name="fecha_expedicion" required>
+        
+        <label for="fecha_caducidad">Fecha de Caducidad:</label>
+        <input type="date" id="fecha_caducidad" name="fecha_caducidad">
+        
+        <label for="credenciales_id">ID de las Credenciales:</label>
+        <input type="text" id="credenciales_id" name="credenciales_id">
+        
+        <label for="url_credencial">URL de la Credencial:</label>
+        <input type="url" id="url_credencial" name="url_credencial">
+        
+        <button type="submit">Guardar</button>
+    </form>
+
+    <h2>Certificaciones Guardadas</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Nombre de la Certificación</th>
+                <th>Organización Emisora</th>
+                <th>Fecha de Expedición</th>
+                <th>Fecha de Caducidad</th>
+                <th>ID de las Credenciales</th>
+                <th>URL de la Credencial</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cert in certs %}
+            <tr>
+                <td>{{ cert.nombre_certificacion }}</td>
+                <td>{{ cert.organizacion_emisora }}</td>
+                <td>{{ cert.fecha_expedicion }}</td>
+                <td>{{ cert.fecha_caducidad }}</td>
+                <td>{{ cert.credenciales_id }}</td>
+                <td><a href="{{ cert.url_credencial }}" target="_blank">Ver Credencial</a></td>
+                <td>
+                    <a href="{{ url_for('edit_certificacion', id=cert.id) }}" class="button-edit">Editar</a>
+                    <a href="{{ url_for('delete_certificacion', id=cert.id) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar esta certificación?');" class="button-delete">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('logout') }}" class="button-general">Volver al inicio</a>
+    <a href="{{ url_for('proyectos') }}" class="button-general">Siguiente</a>
+</body>
+</html>
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Proyectos</title>
+</head>
+<body>
+    <h1>Proyectos</h1>
+    <form action="/proyectos/add" method="POST" enctype="multipart/form-data">
+        <label for="nombre_proyecto">Nombre del Proyecto:</label>
+        <input type="text" id="nombre_proyecto" name="nombre_proyecto" required>
+        
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea>
+        
+        <label for="tecnologias_utilizadas">Tecnologías Utilizadas:</label>
+        <input type="text" id="tecnologias_utilizadas" name="tecnologias_utilizadas" required>
+        
+        <label for="enlace_proyecto">Enlace del Proyecto:</label>
+        <input type="url" id="enlace_proyecto" name="enlace_proyecto">
+        
+        <label for="imagen_proyecto">Imagen del Proyecto:</label>
+        <input type="file" id="imagen_proyecto" name="imagen_proyecto" accept="image/*">
+        
+        <button type="submit">Guardar</button>
+    </form>
+
+    <h2>Proyectos Guardados</h2>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Nombre del Proyecto</th>
+                <th>Descripción</th>
+                <th>Tecnologías Utilizadas</th>
+                <th>Enlace del Proyecto</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr>
+                <td>{{ project.nombre_proyecto }}</td>
+                <td>{{ project.descripcion }}</td>
+                <td>{{ project.tecnologias_utilizadas }}</td>
+                <td><a href="{{ project.enlace_proyecto }}" target="_blank">Ver Proyecto</a></td>
+                <td>
+                    {% if project.imagen_proyecto %}
+                    <img src="{{ url_for('static', filename='uploads/' ~ project.imagen_proyecto) }}" alt="{{ project.nombre_proyecto }}" width="50">
+                    {% else %}
+                    No hay imagen
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ url_for('edit_proyecto', id=project.id) }}" class="button-edit">Editar</a>
+                    <a href="{{ url_for('delete_proyecto', id=project.id) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar este proyecto?');" class="button-delete">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('logout') }}" class="button-general">Volver al inicio</a>
+    <a href="{{ url_for('cv') }}" class="button-general">Finalizar</a>
+</body>
+</html>
+
+
+

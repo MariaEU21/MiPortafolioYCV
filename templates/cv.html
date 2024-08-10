@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cv_styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Curriculum Vitae</title>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="cv-sidebar">
+            {% if datos_personales.foto %}
+                <img src="{{ url_for('static', filename='uploads/' ~ datos_personales.foto) }}" alt="Profile Picture">
+            {% else %}
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Profile Picture">
+            {% endif %}
+            <h2>{{ datos_personales.nombre }}</h2>
+            <h3>Contacto</h3>
+            <p>Email: {{ datos_personales.email }}</p>
+            <p>Teléfono: {{ datos_personales.telefono }}</p>
+            <p>Dirección: {{ datos_personales.direccion }}</p>
+            <div class="social-links">
+                <a href="{{ datos_personales.linkedin }}" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="{{ datos_personales.github }}" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <h3>Habilidades</h3>
+            <!-- Añade aquí las habilidades si es necesario -->
+            <h3>Idiomas</h3>
+            <!-- Añade aquí los idiomas si es necesario -->
+        </div>
+        <div class="cv-content">
+            <h2>Acerca de mi</h2>
+            <p>Como estudiante de programación web, estoy comprometida con aprender y desarrollar habilidades técnicas para crear soluciones innovadoras y eficientes. Mi interés en la programación comenzó cuando descubrí la capacidad de las tecnologías web para mejorar la vida de las personas y transformar la forma en que hacemos negocios. Actualmente, estoy aprendiendo lenguajes de programación como HTML, CSS y JavaScript. ¡Estoy entusiasmada de ver cómo mi experiencia en programación web se desarrollará en los próximos años y cómo puedo contribuir al mundo de la tecnología!</p>
+            <h2>Experiencia</h2>
+            {% for exp in experiencias %}
+                <p>{{ exp.cargo }} - {{ exp.empresa }}</p>
+                <p>{{ exp.fecha_inicio }} - {{ exp.fecha_fin }}</p>
+                <p>{{ exp.descripcion }}</p>
+            {% endfor %}
+            <h2>Educación</h2>
+            {% for edu in educaciones %}
+                <p>{{ edu.titulo }} - {{ edu.institucion }}</p>
+                <p>{{ edu.fecha_inicio }} - {{ edu.fecha_fin }}</p>
+            {% endfor %}
+            <h2>Certificaciones</h2>
+            {% for cert in certificaciones %}
+                <p>{{ cert.nombre_certificacion }} - {{ cert.organizacion_emisora }}</p>
+                <p>{{ cert.fecha_expedicion }} - {{ cert.fecha_caducidad }}</p>
+                <p>ID Credencial: {{ cert.credenciales_id }}</p>
+                <a class="button-link" href="{{ cert.url_credencial }}" target="_blank">Ver Credencial</a>
+            {% endfor %}
+            <h2>Proyectos</h2>
+            {% for proj in proyectos %}
+                <p>{{ proj.nombre_proyecto }}</p>
+                <p>{{ proj.descripcion }}</p>
+                <p>Tecnologías: {{ proj.tecnologias_utilizadas }}</p>
+                <a class="button-link" href="{{ proj.enlace_proyecto }}" target="_blank">Ver Proyecto</a>
+            {% endfor %}
+        </div>
+    </div>
+    <footer>
+        <a href="{{ url_for('home') }}" class="button-general">Volver al inicio</a>
+
+    </footer>
+</body>
+</html>
+

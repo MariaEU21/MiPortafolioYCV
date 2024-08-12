@@ -1,3 +1,4 @@
+/*Estilos existentes */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -56,14 +57,35 @@ body {
 .cv-sidebar .social-links a {
     display: inline-block;
     margin-right: 10px;
+    font-size: 30px;
+    color: white;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.cv-sidebar .social-links a img {
-    width: 30px;
-    height: 30px;
+.cv-sidebar .social-links a:hover {
+    color: #5cb85c; /* Cambia el color al hacer hover */
+    transform: scale(1.2); /* Aumenta ligeramente el tamaño al hacer hover */
+}
+
+/* Estilos para los íconos */
+.cv-sidebar .social-links a i {
     vertical-align: middle;
 }
 
+/* Estilos mejorados para el párrafo "Acerca de mí" */
+.cv-content p.about-me {
+    background-color: #f0f8ff; /* Color de fondo suave */
+    padding: 20px 25px; /* Espaciado interno más grande */
+    margin-bottom: 20px; /* Mayor separación del siguiente contenido */
+    font-size: 18px; /* Tamaño de fuente más grande */
+    line-height: 1.8; /* Espaciado entre líneas mayor */
+    border-left: 4px solid #5cb85c; /* Barra decorativa a la izquierda */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+
+/* General button styling */
 .button-link {
     background-color: #5cb85c;
     color: #fff;
@@ -80,7 +102,6 @@ body {
     background-color: #4cae4c;
 }
 
-/* General button styling */
 .button-general {
     background-color: #2c3e50;
     color: #fff;

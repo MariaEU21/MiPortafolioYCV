@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -29,13 +30,23 @@
                 </a>
             </div>
             <h3>Habilidades</h3>
-            <!-- Añade aquí las habilidades si es necesario -->
+<ul>
+    {% for skill in habilidades %}
+        <li>{{ skill.habilidad }} - {{ skill.nivel }}</li>
+    {% endfor %}
+</ul>
+
+
+            
+
+
             <h3>Idiomas</h3>
             <!-- Añade aquí los idiomas si es necesario -->
         </div>
         <div class="cv-content">
             <h2>Acerca de mi</h2>
-            <p>Como estudiante de programación web, estoy comprometida con aprender y desarrollar habilidades técnicas para crear soluciones innovadoras y eficientes. Mi interés en la programación comenzó cuando descubrí la capacidad de las tecnologías web para mejorar la vida de las personas y transformar la forma en que hacemos negocios. Actualmente, estoy aprendiendo lenguajes de programación como HTML, CSS y JavaScript. ¡Estoy entusiasmada de ver cómo mi experiencia en programación web se desarrollará en los próximos años y cómo puedo contribuir al mundo de la tecnología!</p>
+            <p class="about-me">
+                Como estudiante de programación web, estoy comprometida con aprender y desarrollar habilidades técnicas para crear soluciones innovadoras y eficientes. Mi interés en la programación comenzó cuando descubrí la capacidad de las tecnologías web para mejorar la vida de las personas y transformar la forma en que hacemos negocios. Actualmente, estoy aprendiendo lenguajes de programación como HTML, CSS y JavaScript. ¡Estoy entusiasmada de ver cómo mi experiencia en programación web se desarrollará en los próximos años y cómo puedo contribuir al mundo de la tecnología!</p>
             <h2>Experiencia</h2>
             {% for exp in experiencias %}
                 <p>{{ exp.cargo }} - {{ exp.empresa }}</p>
@@ -69,4 +80,6 @@
     </footer>
 </body>
 </html>
+
+
 

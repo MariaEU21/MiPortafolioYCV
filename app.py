@@ -414,7 +414,7 @@ def cv():
     experiencias = ExperienciaLaboral.query.all()
     educaciones = Educacion.query.all()
     certificaciones = Certificaciones.query.all()
-    habilidades = Habilidades.query.all()
+    habilidades = Habilidades.query.all()  # Aquí se obtienen las habilidades
     proyectos = Proyectos.query.all()
     
     return render_template('cv.html', 
@@ -422,14 +422,12 @@ def cv():
                            experiencias=experiencias, 
                            educaciones=educaciones, 
                            certificaciones=certificaciones,
-                           habilidades=habilidades, 
+                           habilidades=habilidades,  # Aquí se pasan al template
                            proyectos=proyectos)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
 
 
 

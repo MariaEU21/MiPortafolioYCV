@@ -6,7 +6,7 @@ import os
 
 # Inicialización de la aplicación Flask
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:12345678@localhost/cv_database'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://admin:gQCx354qZRHfnoGmr7XYydFBmKC4VVnh@dpg-cqspjod6l47c7a5g6gg-a.oregon-postgres.render.com:5432/miportafolio_g2nc'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'mysecret'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
@@ -427,7 +427,8 @@ def cv():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
+
 
 
 
